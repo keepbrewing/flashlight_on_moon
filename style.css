@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    cursor: none;
+}
+
+canvas {
+    display: block;
+}
+
+#torch {
+    position: fixed;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+
+    box-shadow:
+        0 0 15px white,
+        0 0 35px white,
+        0 0 70px rgba(255, 255, 255, 0.35);
+
+    pointer-events: none;
+}
