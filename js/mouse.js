@@ -5,7 +5,7 @@ export const mouse = {
 
 const torch = document.getElementById("torch");
 
-window.addEventListener("mousemove", (event) => {
+window.addEventListener("pointermove", (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
