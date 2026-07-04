@@ -3,6 +3,16 @@ export const mouse = {
     y: 0
 };
 
+export let flashlightActive = true;
+
+const isTouchDevice =
+    "ontouchstart" in window ||
+    navigator.maxTouchPoints > 0;
+
+if (isTouchDevice) {
+    flashlightActive = false;
+}
+
 const torch = document.getElementById("torch");
 
 function updatePointer(x, y) {
@@ -36,3 +46,30 @@ window.addEventListener("touchmove", (event) => {
     );
 
 }, { passive: false });
+
+window.addEventListener("touchstart", (event) => {
+
+    flashlightActive = true;
+
+    const touch = event.touches[0];
+
+    updatePointer(
+        touch.clientX,
+        touch.clientY
+    );
+
+    if (torch) {
+        torch.style.opacity = "1";
+    }
+
+}, { passive: false });
+
+window.addEventListener("touchend", () => {
+
+    flashlightActive = false;
+
+    if (torch) {
+        torch.style.opacity = "0";
+    }
+
+});
