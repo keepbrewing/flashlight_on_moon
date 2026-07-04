@@ -28,10 +28,15 @@ function animate() {
 
     requestAnimationFrame(animate);
     if (flashlightActive) {
+        flashlight.intensity = 100;
         raycaster.setFromCamera(mouse, camera);
         raycaster.ray.at(15, target);
         flashlight.target.position.copy(target);
         flashlight.target.updateMatrixWorld();
+    }
+    else {
+        const targetIntensity = flashlightActive ? 100 : 0;
+        flashlight.intensity += (targetIntensity - flashlight.intensity) * 0.15;
     }
     moon.rotation.y += 0.001;
 
