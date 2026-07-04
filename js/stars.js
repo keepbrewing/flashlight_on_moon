@@ -2,15 +2,15 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.179/build/three.mod
 
 export function createStars(scene) {
 
-    const starCount = 8000;
+    const starCount = 15000;
     const positions = [];
 
     for (let i = 0; i < starCount; i++) {
 
         positions.push(
-            (Math.random() - 0.5) * 500,
-            (Math.random() - 0.5) * 500,
-            (Math.random() - 0.5) * 500
+            (Math.random() - 0.5) * 1500,
+            (Math.random() - 0.5) * 1500,
+            (Math.random() - 0.5) * 1500
         );
 
     }
@@ -24,32 +24,35 @@ export function createStars(scene) {
 
     const material = new THREE.PointsMaterial({
         color: 0xffffff,
-        size: 0.3,
+        size: 0.12,
         sizeAttenuation: true
     });
 
     const stars = new THREE.Points(geometry, material);
+    stars.userData.speed = 0.00001;
     scene.add(stars);
 
     // ---------- Twinkling Stars ----------
 
     const twinklers = [];
 
-    const starGeometry = new THREE.SphereGeometry(0.18, 8, 8);
+    const starGeometry = new THREE.SphereGeometry(0.4, 8, 8);
 
     for (let i = 0; i < 40; i++) {
 
         const star = new THREE.Mesh(
             starGeometry,
             new THREE.MeshBasicMaterial({
-                color: 0xfff8e8
+                color: 0xfff8e8,
+                transparent: true,
+                opacity: 1
             })
         );
 
         star.position.set(
-            (Math.random() - 0.5) * 500,
-            (Math.random() - 0.5) * 500,
-            (Math.random() - 0.5) * 500
+            (Math.random() - 0.5) * 1500,
+            (Math.random() - 0.5) * 1500,
+            (Math.random() - 0.5) * 1500
         );
 
         // Each star twinkles at a different speed
@@ -62,6 +65,6 @@ export function createStars(scene) {
 
     }
 
-    return twinklers;
+    return {stars, twinklers};
 
 }

@@ -73,3 +73,18 @@ window.addEventListener("touchend", () => {
     }
 
 });
+
+if (!isTouchDevice) {
+
+    window.addEventListener("click", () => {
+
+        flashlightActive = !flashlightActive;
+
+        if (torch) {
+            torch.style.opacity =
+                flashlightActive ? "1" : "0";
+        }
+
+    });
+
+}
