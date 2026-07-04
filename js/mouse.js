@@ -11,7 +11,6 @@ function updatePointer(x, y) {
     mouse.x = (x / window.innerWidth) * 2 - 1;
     mouse.y = -(y / window.innerHeight) * 2 + 1;
 
-    // Move the glowing cursor
     if (torch) {
         torch.style.left = `${x - 9}px`;
         torch.style.top = `${y - 9}px`;
