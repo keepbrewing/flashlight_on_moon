@@ -1,7 +1,7 @@
 const ambience = new Audio("./audio/ambience.mp3");
 
 ambience.loop = true;
-ambience.volume = 1;
+ambience.volume = 0.6;
 
 const flashlightAudio = new Audio("./audio/flashlight.mp3");
 
